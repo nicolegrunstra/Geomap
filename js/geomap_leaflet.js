@@ -1,5 +1,5 @@
 L.mapbox.accessToken = 'pk.eyJ1Ijoia2tzMzIiLCJhIjoiY2lsdXc5a2xwMDA2ZXcxbTZoMm5jZTIwcyJ9.CDYFvqPWF2TzCrJGMjl9sQ';
-var map = L.mapbox.map('map', 'mapbox.light', {attributionControl: false,     
+var map = L.mapbox.map('map', 'mapbox.light', {attributionControl: false,   
     legendControl: {
         // Any of the valid control positions:
         // https://www.mapbox.com/mapbox.js/api/v2.4.0/l-control/#control-positions
@@ -9,9 +9,10 @@ var map = L.mapbox.map('map', 'mapbox.light', {attributionControl: false,
 var popup = new L.Popup({ autoPan: false });
 
 // hsvAfrica comes from the 'africa.json' script included above
-var baseLayer = L.geoJson(geomap,  {
-    style: getBaseStyle
-    });
+var baseLayer = L.geoJson(geoMap, {
+    style: getBaseStyle,
+    onEachFeature: onEachFeature
+    }).addTo(map);
 
 
 // Base map and overlay maps
@@ -21,7 +22,21 @@ var baseMaps = { "Base map": baseLayer};
 // Create a group of map Layers
 var mapLayers = L.layerGroup([baseLayer])
 
-var control = L.control.activeLayers(baseMaps); 
+
+var circ0 = L.circle([23.01,97.19], 84499.5495416, {   
+    color: '#0000FF',    
+    weight: 0, 
+    fillColor: '#0000FF',       
+    fillOpacity: 1.0       
+}).addTo(map);
+
+
+var markers = L.layerGroup([circ0]).addTo(map);
+
+var overlayMaps = { "Allometry": markers};
+
+ 
+var control = L.control.activeLayers(baseMaps, overlayMaps); 
 control.addTo(map);
 
 
@@ -29,10 +44,10 @@ control.addTo(map);
 function getBaseStyle(feature) {
   return {
     stroke: true,
-    weight: 2,
-    opacity: 0.2,
+    weight: 0,
+    opacity: 0.,
     color: '#404040',
-    fillOpacity: 0.7,
+    fillOpacity: 0.,
     fillColor:'#FFFFFF'
   };
 }
@@ -99,12 +114,8 @@ function getColor(d) {
     '#FFFFFF';
 }
 
-
-
 function onEachFeature(feature, layer) {
   layer.on({
-    mousemove: mousemove,
-    mouseout: mouseout,
     click: zoomToFeature
   });
 }
@@ -112,49 +123,23 @@ function onEachFeature(feature, layer) {
 var closeTooltip;
 
 
-function mousemove(e) {
-  var layer = e.target;
-  
-  popup.setLatLng(e.latlng);
-  if (!popup._map) popup.openOn(map);
-  window.clearTimeout(closeTooltip);
-
-  // highlight feature
-  layer.setStyle({
-    weight: 3,
-    opacity: 0.3,
-    fillOpacity: 0.9
-  });
-
-  if (!L.Browser.ie && !L.Browser.opera) {
-    layer.bringToFront();
-  }
-}
-
-
-function mouseout(e) {
-  // Get current layer
-  closeTooltip = window.setTimeout(function() {
-    map.closePopup();
-  }, 100);
-}
-
 function zoomToFeature(e) {
   map.fitBounds(e.target.getBounds());
 }
 
 map.legendControl.addLegend(getLegendHTML());
 
-map.legendControl.posistion('bottomleft');
+//map.legendControl.position('bottomleft');
 
 function getLegendHTML() {
   var grades = [1, 10, 20, 30, 40, 50, 60, 70, 80],
   labels = [],
   from, to;
-  var colours = ['#A23336', '#D63E2A', '#38AADD', '#FF91EA', '#D252B9', '#72B026', '#F78E2D', ];
-  var genera = ['Ardipithecus', 'Australopithecus', 'Homo', 'Kenyanthropus', 'Orrorin', 'Paranthropus', 'Sahelanthropus', ];
+  var colours = ['#0000FF', '#D63E2A', '#38AADD', '#FF91EA', '#D252B9', '#72B026', '#F78E2D', '#F78E2D', '#F78E2D','#F78E2D','#F78E2D' ];
+  var genera = ['M. assamensis', 'M. cyclopis', 'M. fascicularis', 'M. fuscata', 'M. maura', 'M. mulatta', 'M. nemestrina', 'M. nigra', 'M. radiata', 'M. silenus', 'M. sinica', 'M. sylvanus' ];
 
   var generaLegend = [];
+ 
   for (var i = 0; i < grades.length; i++) {
     from = grades[i];
     to = grades[i + 1];
@@ -170,9 +155,9 @@ function getLegendHTML() {
       genera[i] + '</li>');
   }
 
-
-  return '<div id="genera-legend"><span><strong>Genera</strong></span><ul>' + generaLegend.join('') + '</ul></div>';
+ 
+  return '<div id="genera-legend"><span><strong>Species</strong></span><ul>' + generaLegend.join('') + '</ul></div>';
 }
 
 var credits = L.control.attribution();
-credits.addAttribution('<a href="https://chimphub.com/wadhamite/hsv-mapping">CC-BY-NC-SA 4.0</a>').addTo(map);
+credits.addAttribution('<a href="https://github.com/nicolegrunstra/Geomap">CC-BY-NC-SA 4.0</a>').addTo(map);
