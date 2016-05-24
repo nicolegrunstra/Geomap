@@ -21,72 +21,25 @@ var baseMaps = { "Base map": baseLayer};
 // Create a group of map Layers
 var mapLayers = L.layerGroup([baseLayer])
 
-L.Marker.prototype.openPopupBackup = L.Marker.prototype.openPopup;
-    L.Marker.prototype.openPopup = function() {
-        if (!this._map && this.__parent) {
-            this.__parent._group.on('spiderfied', this.doneSpiderfy, this);
-            this.__parent.spiderfy();
-        }
-        else {
-            this.openPopupBackup();
-        }
+// load the above GeoJSON into the featureLayer and use pointToLayer
+// to pass in the features properties and geometry
+L.mapbox.featureLayer(geojson, {
+    pointToLayer: function(feature) {
+        // L.circleMarker() draws a circle with fixed radius in pixels. 
+        // To draw a circle overlay with a radius in meters, use L.circle()
+        return L.circleMarker([parseFloat(feature.geometry.coordinates[0]),parseFloat(feature.geometry.coordinates[1])], {radius: feature.properties.allometry_scaled * 25, 
+					fillColor: feature.properties.colour,
+					color: feature.properties.colour,  
+					fillOpacity: 0.7});
     }
-    L.Marker.prototype.doneSpiderfy = function() {
-        this.__parent._group.off('spiderfied', this.doneSpiderfy, this);
-        this.openPopupBackup();
-    }
+}).addTo(map);
 
+//var markers = L.layerGroup([assamensis, cyclopis, fascicularis, fuscata, maura, mulatta]).addTo(map);
 
-var circ0 = L.circle([23.01,97.19], 84499.5495416, {   
-    color: '#0000FF',    
-    weight: 0, 
-    fillColor: '#0000FF',       
-    fillOpacity: 1.0       
-});
-
-
-var circ1 = L.circle([23.91,121.04], 343422.4665801, {   
-    color: '#00CC33',    
-    weight: 0, 
-    fillColor: '#00CC33',       
-    fillOpacity: 1.0       
-});
-
-var circ2 = L.circle([4.13,111.24], 535448.0067978, {   
-    color: '#CC9966',    
-    weight: 0, 
-    fillColor: '#CC9966',       
-    fillOpacity: 1.0       
-});
-
-var circ3 = L.circle([35.88,135.51], 50000.0009129, {   
-    color: '#CC0099',    
-    weight: 0, 
-    fillColor: '#CC0099',       
-    fillOpacity: 1.0       
-});
-
-var circ4 = L.circle([-4.98,119.9], 275587.4942132, {   
-    color: '#FFFF00',    
-    weight: 0, 
-    fillColor: '#FFFF00',       
-    fillOpacity: 1.0       
-});
-
-
-var circ5 = L.circle([25.07,96.67], 501231.4954262, {   
-    color: '#FF0000',    
-    weight: 0, 
-    fillColor: '#FF0000',       
-    fillOpacity: 1.0       
-});
-
-var markers = L.layerGroup([circ0, circ1, circ2, circ3, circ4, circ5]).addTo(map);
-
-var overlayMaps = { "Allometry": markers};
+//var overlayMaps = { "Allometry": markers};
 
  
-var control = L.control.activeLayers(baseMaps, overlayMaps); 
+var control = L.control.activeLayers(baseMaps); //, overlayMaps); 
 control.addTo(map);
 
 
