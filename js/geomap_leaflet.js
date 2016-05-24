@@ -4,7 +4,7 @@ var map = L.mapbox.map('map', 'mapbox.light', {attributionControl: false,
         // Any of the valid control positions:
         // https://www.mapbox.com/mapbox.js/api/v2.4.0/l-control/#control-positions
         position: 'bottomright'
-    }}).setView([12., 50.], 4);
+    }}).setView([12., 60.], 4);
 
 var popup = new L.Popup({ autoPan: false });
 
