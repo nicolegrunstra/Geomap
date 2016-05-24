@@ -15,12 +15,6 @@ var baseLayer = L.geoJson(geoMap, {
     }).addTo(map);
 
 
-// Base map and overlay maps
-var baseMaps = { "Base map": baseLayer};
-
-// Create a group of map Layers
-var mapLayers = L.layerGroup([baseLayer])
-
 // load the above GeoJSON into the featureLayer and use pointToLayer
 // to pass in the features properties and geometry
 var allometry_markers = L.mapbox.featureLayer(geojson, {
@@ -48,8 +42,14 @@ var ecological_cline = L.mapbox.featureLayer(geojson, {
 
 var overlayMaps = { "Allometry": allometry_markers, "Ecological cline": ecological_cline};
 
- 
-var control = L.control.activeLayers(baseMaps, overlayMaps); 
+
+// Base maps
+var baseMaps = { "Base map": baseLayer};
+
+// Create a group of map Layers
+var mapLayers = L.layerGroup([baseLayer])
+
+var control = L.control.activeLayers(overlayMaps); 
 control.addTo(map);
 
 
