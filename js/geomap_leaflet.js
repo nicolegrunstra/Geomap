@@ -4,7 +4,7 @@ var map = L.mapbox.map('map', 'mapbox.light', {attributionControl: false,
         // Any of the valid control positions:
         // https://www.mapbox.com/mapbox.js/api/v2.4.0/l-control/#control-positions
         position: 'bottomright'
-    }}).setView([12., 55.], 4);
+    }}).setView([12., 50.], 4);
 
 var popup = new L.Popup({ autoPan: false });
 
@@ -30,15 +30,20 @@ var circ0 = L.circle([23.01,97.19], 84499.5495416, {
 });
 
 
-var markers = L.layerGroup([circ0]).addTo(map);
+var circ1 = L.circle([23.91,121.04], 343422.4665801, {   
+    color: '#00CC33',    
+    weight: 0, 
+    fillColor: '#00CC33',       
+    fillOpacity: 1.0       
+});
+
+var markers = L.layerGroup([circ0, circ1]).addTo(map);
 
 var overlayMaps = { "Allometry": markers};
 
  
 var control = L.control.activeLayers(baseMaps, overlayMaps); 
 control.addTo(map);
-
-
 
 
 // Base Layer
