@@ -4,7 +4,7 @@ var map = L.mapbox.map('map', 'mapbox.light', {attributionControl: false,
         // Any of the valid control positions:
         // https://www.mapbox.com/mapbox.js/api/v2.4.0/l-control/#control-positions
         position: 'bottomright'
-    }}).setView([12., 60.], 4);
+    }}).setView([15., 65.], 4);
 
 var popup = new L.Popup({ autoPan: false });
 
@@ -27,10 +27,11 @@ L.mapbox.featureLayer(geojson, {
     pointToLayer: function(feature) {
         // L.circleMarker() draws a circle with fixed radius in pixels. 
         // To draw a circle overlay with a radius in meters, use L.circle()
-        return L.circleMarker([parseFloat(feature.geometry.coordinates[0]),parseFloat(feature.geometry.coordinates[1])], {radius: feature.properties.allometry_scaled * 25, 
-					fillColor: feature.properties.colour,
-					color: feature.properties.colour,  
-					fillOpacity: 0.7});
+        return L.circleMarker(feature.geometry.coordinates, {radius: feature.properties.allometry_scaled * 50, 
+		fillColor: feature.properties.colour,
+		color: feature.properties.colour,  
+		fillOpacity: 0.8}).bindPopup("<strong><i>"+feature.properties.species+"</i></strong>\
+		<br/>Allometry: " + feature.properties.allometry);
     }
 }).addTo(map);
 
