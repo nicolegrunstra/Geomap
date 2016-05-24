@@ -141,7 +141,7 @@ function getLegendHTML() {
   var grades = [1, 10, 20, 30, 40, 50, 60, 70, 80],
   labels = [],
   from, to;
-  var colours = ['#0000FF', '#00CC33', '#38AADD', '#FF91EA', '#D252B9', '#72B026', '#F78E2D', '#F78E2D', '#F78E2D','#F78E2D','#F78E2D' ];
+  var colours = ['#0000FF', '#00CC33', '#CC9966', '#CC0099', '#FFFF00', '#FF0000', '#00CCFF', '#000000', '#009900','#FF9900','#CC99CC', '#006666' ];
   var genera = ['M. assamensis', 'M. cyclopis', 'M. fascicularis', 'M. fuscata', 'M. maura', 'M. mulatta', 'M. nemestrina', 'M. nigra', 'M. radiata', 'M. silenus', 'M. sinica', 'M. sylvanus' ];
 
   var generaLegend = [];
