@@ -23,11 +23,10 @@ var mapLayers = L.layerGroup([baseLayer])
 
 // load the above GeoJSON into the featureLayer and use pointToLayer
 // to pass in the features properties and geometry
-L.mapbox.featureLayer(geojson, {
+var allometry_markers = L.mapbox.featureLayer(geojson, {
     pointToLayer: function(feature) {
-        // L.circleMarker() draws a circle with fixed radius in pixels. 
-        // To draw a circle overlay with a radius in meters, use L.circle()
-        return L.circleMarker(feature.geometry.coordinates, {radius: feature.properties.allometry_scaled * 50, 
+	return L.circleMarker(feature.geometry.coordinates, 
+	 	{radius: feature.properties.allometry_scaled * 50, 
 		fillColor: feature.properties.colour,
 		color: feature.properties.colour,  
 		fillOpacity: 0.8}).bindPopup("<strong><i>"+feature.properties.species+"</i></strong>\
@@ -35,12 +34,22 @@ L.mapbox.featureLayer(geojson, {
     }
 }).addTo(map);
 
-//var markers = L.layerGroup([assamensis, cyclopis, fascicularis, fuscata, maura, mulatta]).addTo(map);
+var ecological_cline = L.mapbox.featureLayer(geojson, {
+    pointToLayer: function(feature) {
+	return L.circleMarker(feature.geometry.coordinates, 
+	 	{radius: feature.properties.eco_scaled * 50, 
+		fillColor: feature.properties.colour,
+		color: feature.properties.colour,  
+		fillOpacity: 0.8}).bindPopup("<strong><i>"+feature.properties.species+"</i></strong>\
+		<br/>Ecological cline: " + feature.properties.cline);
+    }
+});
 
-//var overlayMaps = { "Allometry": markers};
+
+var overlayMaps = { "Allometry": allometry_markers, "Ecological cline": ecological_cline};
 
  
-var control = L.control.activeLayers(baseMaps); //, overlayMaps); 
+var control = L.control.activeLayers(baseMaps, overlayMaps); 
 control.addTo(map);
 
 
