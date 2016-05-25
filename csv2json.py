@@ -62,7 +62,7 @@ try:
       species = line[0]
       colour = line[7]
       id = id + 1
-      case = allometry
+      case = eco
       print(species)
       if (case > 0):
         wfile.write('\n\
@@ -71,7 +71,7 @@ try:
         \n  color: \'%s\',\
         \n  fillColor: \'%s\',\
         \n  fillOpacity: 0.7\
-        \n  }).bindPopup("<strong><i>%s</i></strong><br/>Allometry: %.4f");' % (species, lat, lon, allometry_scaled, colour, colour, species, allometry))
+        \n  }).bindPopup("<strong><i>%s</i></strong><br/>Ecological cline: %.4f");' % (species, lat, lon, eco_scaled, colour, colour, species, eco))
       else:
         wfile.write('\n\
         \nvar %s = L.rectangle([[%.4f -ln, %.4f -ln],[%.4f + ln, %.4f + ln]], {\
@@ -79,7 +79,7 @@ try:
         \n  color: \'%s\',\
         \n  fillColor: \'%s\',\
         \n  fillOpacity: 0.7\
-        \n  }).bindPopup("<strong><i>%s</i><strong><br/>Allometry: %.4f");' % (species, lat, lon,lat, lon, colour, colour, species, allometry))
+        \n  }).bindPopup("<strong><i>%s</i><strong><br/>Ecological cline: %.4f");' % (species, lat, lon,lat, lon, colour, colour, species, eco))
 
 finally:
   file.close()
