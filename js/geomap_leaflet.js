@@ -14,6 +14,10 @@ var baseLayer = L.geoJson(geoMap, {
     onEachFeature: onEachFeature
     }).addTo(map);
 
+// define rectangle geographical bounds
+var bounds = [[54.559322, -5.767822], [56.1210604, -3.021240]];
+L.rectangle(bounds, {color: "#ff7800", weight: 1}).addTo(map);
+
 
 // load the above GeoJSON into the featureLayer and use pointToLayer
 // to pass in the features properties and geometry
@@ -27,12 +31,16 @@ var allometry_markers = L.mapbox.featureLayer(geojson, {
 		fillOpacity: 0.8}).bindPopup("<strong><i>"+feature.properties.species+"</i></strong>\
                 <br/>Allometry: " + feature.properties.allometry);
       }
-      else {
+        else {
+//        return L.circleMarker(feature.geometry.coordinates, {radius : 0});
+//      }
+//    }, style: function(feature) {
         var xc = feature.geometry.coordinates[0];
         var yc = feature.geometry.coordinates[1];
         var l  = feature.properties.allometry_scaled * 5; 
         var bounds = [[xc - l, yc - l], [xc + l, yc + l]];
-          return L.rectangle(bounds, {
+        if (feature.properties.allometry < 0) {
+            return L.rectangle(bounds, {
               weight: 1,
               fillColor: feature.properties.colour,
 	      color: feature.properties.colour,  
@@ -40,6 +48,8 @@ var allometry_markers = L.mapbox.featureLayer(geojson, {
                                            "</i></strong><br/>Allometry: "
                                            + feature.properties.allometry);
       }
+//        else { return L.rectangle(bounds, {weight: 0}); }
+        }
     }
 }).addTo(map);
 

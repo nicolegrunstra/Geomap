@@ -8,7 +8,7 @@ var geojson = {
         "species" : "M. assamensis",
         "allometry" : -9.251743384,
         "cline" : 0.254727044,
-        "allometry_scaled" : 0.1689990991,
+        "allometry_scaled" : 1.013557267,
         "eco_scaled" : 0.5222378439,
         "colour" : "#0000FF"
       }
@@ -20,7 +20,7 @@ var geojson = {
         "species" : "M. cyclopis",
         "allometry" : 2.093778927,
         "cline" : -1.392773882,
-        "allometry_scaled" : 0.6868449332,
+        "allometry_scaled" : 0.495711432,
         "eco_scaled" : 0.2570824857,
         "colour" : "#00CC33"
       }
@@ -32,7 +32,7 @@ var geojson = {
         "species" : "M. fascicularis",
         "allometry" : 10.50798218,
         "cline" : 0.067177504,
-        "allometry_scaled" : 1.0708960136,
+        "allometry_scaled" : 0.1116603508,
         "eco_scaled" : 0.4920528742,
         "colour" : "#CC9966"
       }
@@ -44,7 +44,7 @@ var geojson = {
         "species" : "M. fuscata",
         "allometry" : -10.76344966,
         "cline" : -0.813450644,
-        "allometry_scaled" : 0.1000000018,
+        "allometry_scaled" : 1.0825563644,
         "eco_scaled" : 0.350321074,
         "colour" : "#CC0099"
       }
@@ -56,7 +56,7 @@ var geojson = {
         "species" : "M. maura",
         "allometry" : -0.87862383,
         "cline" : -0.296088399,
-        "allometry_scaled" : 0.5511749884,
+        "allometry_scaled" : 0.6313813769,
         "eco_scaled" : 0.4335874135,
         "colour" : "#FFFF00"
       }
@@ -68,7 +68,7 @@ var geojson = {
         "species" : "M. mulatta",
         "allometry" : 9.008678072,
         "cline" : -2.368781089,
-        "allometry_scaled" : 1.0024629909,
+        "allometry_scaled" : 0.1800933737,
         "eco_scaled" : 0.1,
         "colour" : "#FF0000"
       }
@@ -80,7 +80,7 @@ var geojson = {
         "species" : "M. nemestrina",
         "allometry" : -9.420751507,
         "cline" : 3.84456092,
-        "allometry_scaled" : 0.1612850292,
+        "allometry_scaled" : 1.0212713369,
         "eco_scaled" : 1.1,
         "colour" : "#00CCFF"
       }
@@ -92,7 +92,7 @@ var geojson = {
         "species" : "M. nigra",
         "allometry" : -0.263514152,
         "cline" : 2.839240873,
-        "allometry_scaled" : 0.5792505565,
+        "allometry_scaled" : 0.6033058088,
         "eco_scaled" : 0.9381997892,
         "colour" : "#000000"
       }
@@ -104,7 +104,7 @@ var geojson = {
         "species" : "M. radiata",
         "allometry" : 3.925560746,
         "cline" : -0.943297718,
-        "allometry_scaled" : 0.7704532993,
+        "allometry_scaled" : 0.4121030656,
         "eco_scaled" : 0.329422969,
         "colour" : "#009900"
       }
@@ -116,7 +116,7 @@ var geojson = {
         "species" : "M. silenus",
         "allometry" : 3.208547077,
         "cline" : -0.563348985,
-        "allometry_scaled" : 0.737726508,
+        "allometry_scaled" : 0.444829857,
         "eco_scaled" : 0.3905734308,
         "colour" : "#FF9900"
       }
@@ -128,7 +128,7 @@ var geojson = {
         "species" : "M. sinica",
         "allometry" : 11.14562355,
         "cline" : -0.417604839,
-        "allometry_scaled" : 1.1,
+        "allometry_scaled" : 0.0825563644,
         "eco_scaled" : 0.4140300739,
         "colour" : "#CC99CC"
       }
@@ -140,7 +140,7 @@ var geojson = {
         "species" : "M. sylvanus",
         "allometry" : -3.306113144,
         "cline" : -1.162544029,
-        "allometry_scaled" : 0.4403766317,
+        "allometry_scaled" : 0.7421797339,
         "eco_scaled" : 0.2941365948,
         "colour" : "#006666"
       }
