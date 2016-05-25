@@ -8,17 +8,10 @@ var map = L.mapbox.map('map', 'mapbox.light', {attributionControl: false,
 
 var popup = new L.Popup({ autoPan: false });
 
-// hsvAfrica comes from the 'africa.json' script included above
-var baseLayer = L.geoJson(geoMap, {
-    style: getBaseStyle,
-    onEachFeature: onEachFeature
-    }).addTo(map);
-
-
 var scale = 25;
 var ln = 2;
       
-
+// Allometry
         
 var assamensis = L.circleMarker([23.0100,97.1900], {        
   radius: 1.0136 * scale,        
@@ -105,7 +98,9 @@ var sylvanus = L.circleMarker([34.2100,-0.6200], {
 }).bindPopup("<strong><i>M. sylvanus</i></strong><br/>Allometry: 3.3061");
 
 
-        
+// Ecological cline
+var scale = 50;
+
 var eco_assamensis = L.circleMarker([23.0100,97.1900], {        
   radius: 0.0663 * scale,        
   color: '#0000FF',        
@@ -190,34 +185,13 @@ var eco_sylvanus = L.rectangle([[34.2100 -ln, -0.6200 -ln],[34.2100 + ln, -0.620
   fillOpacity: 0.7        
 }).bindPopup("<strong><i>M. sylvanus</i><strong><br/>Ecological cline: -1.1625");
 
-var allometry_markers = L.layerGroup([assamensis, cyclopis, fascicularis, fuscata, maura, mulatta, nemestrina, nigra, radiata, silenus, sinica, sylvanus]).addTo(map);
+var allometry_layer = L.layerGroup([assamensis, cyclopis, fascicularis, fuscata, maura, mulatta, nemestrina, nigra, radiata, silenus, sinica, sylvanus]).addTo(map);
 
-var eco_markers = L.layerGroup([eco_assamensis, eco_cyclopis, eco_fascicularis, eco_fuscata, eco_maura, eco_mulatta, eco_nemestrina, eco_nigra, eco_radiata, eco_silenus, eco_sinica, eco_sylvanus]);
+var eco_layer = L.layerGroup([eco_assamensis, eco_cyclopis, eco_fascicularis, eco_fuscata, eco_maura, eco_mulatta, eco_nemestrina, eco_nigra, eco_radiata, eco_silenus, eco_sinica, eco_sylvanus]);
 
-var overlayMaps = { "Allometry": allometry_markers, "Ecological cline": eco_markers };
+var overlayMaps = { "Allometry": allometry_layer, "Ecological cline": eco_layer };
 
-// Base maps
-var baseMaps = { "Base map": baseLayer };
-
-// Create a group of map Layers
-var mapLayers = L.layerGroup([baseMaps, overlayMaps]);
-
-var control = L.control.activeLayers(overlayMaps); 
-control.addTo(map);
-
-
-// Base Layer
-function getBaseStyle(feature) {
-  return {
-    stroke: true,
-    weight: 0,
-    opacity: 0.,
-    color: '#404040',
-    fillOpacity: 0.,
-    fillColor:'#FFFFFF'
-  };
-}
-
+L.control.layers(overlayMaps).addTo(map);
 
 // Get Color gradient
 function getGradientColor(start_color, end_color, percent) {
