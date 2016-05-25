@@ -14,77 +14,106 @@ var baseLayer = L.geoJson(geoMap, {
     onEachFeature: onEachFeature
     }).addTo(map);
 
-// define rectangle geographical bounds
-var bounds = [[54.559322, -5.767822], [56.1210604, -3.021240]];
-L.rectangle(bounds, {color: "#ff7800", weight: 1}).addTo(map);
+
+var scale = 25;
+var ln = 2;
+      
+
+        
+var assamensis = L.circleMarker([23.0100,97.1900], {        
+  radius: 1.0136 * scale,        
+  color: '#0000FF',        
+  fillColor: '#0000FF',        
+  fillOpacity: 0.7        
+  }).bindPopup("<strong><i>M. assamensis</i></strong><br/>Allometry: 9.2517");
+        
+var cyclopis = L.rectangle([[23.9100 -ln, 121.0400 -ln],[23.9100 + ln, 121.0400 + ln]], {        
+  weight: 1,        
+  color: '#00CC33',        
+  fillColor: '#00CC33',        
+  fillOpacity: 0.7        
+  }).bindPopup("<strong><i>M. cyclopis</i><strong><br/>Allometry: -2.0938");
+        
+var fascicularis = L.rectangle([[4.1300 -ln, 111.2400 -ln],[4.1300 + ln, 111.2400 + ln]], {        
+  weight: 1,        
+  color: '#CC9966',        
+  fillColor: '#CC9966',        
+  fillOpacity: 0.7        
+  }).bindPopup("<strong><i>M. fascicularis</i><strong><br/>Allometry: -10.5080");
+        
+var fuscata = L.circleMarker([35.8800,135.5100], {        
+  radius: 1.0826 * scale,        
+  color: '#CC0099',        
+  fillColor: '#CC0099',        
+  fillOpacity: 0.7        
+  }).bindPopup("<strong><i>M. fuscata</i></strong><br/>Allometry: 10.7634");
+        
+var maura = L.circleMarker([-4.9800,119.9000], {        
+  radius: 0.6314 * scale,        
+  color: '#FFFF00',        
+  fillColor: '#FFFF00',        
+  fillOpacity: 0.7        
+  }).bindPopup("<strong><i>M. maura</i></strong><br/>Allometry: 0.8786");
+        
+var mulatta = L.rectangle([[25.0700 -ln, 96.6700 -ln],[25.0700 + ln, 96.6700 + ln]], {        
+  weight: 1,        
+  color: '#FF0000',        
+  fillColor: '#FF0000',        
+  fillOpacity: 0.7        
+  }).bindPopup("<strong><i>M. mulatta</i><strong><br/>Allometry: -9.0087");
+        
+var nemestrina = L.circleMarker([3.0400,108.0700], {        
+  radius: 1.0213 * scale,        
+  color: '#00CCFF',        
+  fillColor: '#00CCFF',        
+  fillOpacity: 0.7        
+  }).bindPopup("<strong><i>M. nemestrina</i></strong><br/>Allometry: 9.4208");
+        
+var nigra = L.circleMarker([1.0100,124.2600], {        
+  radius: 0.6033 * scale,        
+  color: '#000000',        
+  fillColor: '#000000',        
+  fillOpacity: 0.7        
+  }).bindPopup("<strong><i>M. nigra</i></strong><br/>Allometry: 0.2635");
+        
+var radiata = L.rectangle([[14.5900 -ln, 77.0600 -ln],[14.5900 + ln, 77.0600 + ln]], {        
+  weight: 1,        
+  color: '#009900',        
+  fillColor: '#009900',        
+  fillOpacity: 0.7        
+  }).bindPopup("<strong><i>M. radiata</i><strong><br/>Allometry: -3.9256");
+        
+var silenus = L.rectangle([[13.1900 -ln, 76.1200 -ln],[13.1900 + ln, 76.1200 + ln]], {        
+  weight: 1,        
+  color: '#FF9900',        
+  fillColor: '#FF9900',        
+  fillOpacity: 0.7        
+  }).bindPopup("<strong><i>M. silenus</i><strong><br/>Allometry: -3.2085");
+        
+var sinica = L.rectangle([[7.8700 -ln, 80.7800 -ln],[7.8700 + ln, 80.7800 + ln]], {        
+  weight: 1,        
+  color: '#CC99CC',        
+  fillColor: '#CC99CC',        
+  fillOpacity: 0.7        
+  }).bindPopup("<strong><i>M. sinica</i><strong><br/>Allometry: -11.1456");
+        
+var sylvanus = L.circleMarker([34.2100,-0.6200], {        
+  radius: 0.7422 * scale,        
+  color: '#006666',        
+  fillColor: '#006666',        
+  fillOpacity: 0.7        
+}).bindPopup("<strong><i>M. sylvanus</i></strong><br/>Allometry: 3.3061");
 
 
-// load the above GeoJSON into the featureLayer and use pointToLayer
-// to pass in the features properties and geometry
-var allometry_markers = L.mapbox.featureLayer(geojson, {
-    pointToLayer: function(feature) {
-      if (feature.properties.allometry > 0) {
-        return L.circleMarker(feature.geometry.coordinates, 
-	 	{radius: feature.properties.allometry_scaled * 50, 
-		fillColor: feature.properties.colour,
-		color: feature.properties.colour,  
-		fillOpacity: 0.8}).bindPopup("<strong><i>"+feature.properties.species+"</i></strong>\
-                <br/>Allometry: " + feature.properties.allometry);
-      }
-        else {
-//        return L.circleMarker(feature.geometry.coordinates, {radius : 0});
-//      }
-//    }, style: function(feature) {
-        var xc = feature.geometry.coordinates[0];
-        var yc = feature.geometry.coordinates[1];
-        var l  = feature.properties.allometry_scaled * 5; 
-        var bounds = [[xc - l, yc - l], [xc + l, yc + l]];
-        if (feature.properties.allometry < 0) {
-            return L.rectangle(bounds, {
-              weight: 1,
-              fillColor: feature.properties.colour,
-	      color: feature.properties.colour,  
-	      fillOpacity: 0.8}).bindPopup("<strong><i>" + feature.properties.species +
-                                           "</i></strong><br/>Allometry: "
-                                           + feature.properties.allometry);
-      }
-//        else { return L.rectangle(bounds, {weight: 0}); }
-        }
-    }
-}).addTo(map);
+var allometry_markers = L.layerGroup([assamensis, cyclopis, fascicularis, fuscata, maura, mulatta, nemestrina, nigra, radiata, silenus, sinica, sylvanus]).addTo(map);
 
-var ecological_cline = L.mapbox.featureLayer(geojson, {
-    pointToLayer: function(feature) {
-        if (feature.properties.cline > 0) {
-	return L.circleMarker(feature.geometry.coordinates, 
-	 	{radius: feature.properties.eco_scaled * 50, 
-		fillColor: feature.properties.colour,
-		color: feature.properties.colour,  
-		fillOpacity: 0.8}).bindPopup("<strong><i>"+feature.properties.species+"</i></strong>\
-		<br/>Ecological cline: " + feature.properties.cline);
-	}
-        else {
-        var xc = feature.geometry.coordinates[0];
-        var yc = feature.geometry.coordinates[1];
-        var l  = feature.properties.eco_scaled * 5; 
-        var bounds = [[xc - l, yc - l], [xc + l, yc + l]];
-        return L.rectangle(bounds, { 
-		color: feature.properties.colour,  
-		fillOpacity: 0.8}).bindPopup("<strong><i>"+feature.properties.species+"</i></strong>\
-		<br/>Ecological cline: " + feature.properties.cline);
-	}
-    }
-});
-
-
-var overlayMaps = { "Allometry": allometry_markers, "Ecological cline": ecological_cline};
-
+var overlayMaps = { "Allometry": allometry_markers };
 
 // Base maps
-var baseMaps = { "Base map": baseLayer};
+var baseMaps = { "Base map": baseLayer };
 
 // Create a group of map Layers
-var mapLayers = L.layerGroup([baseLayer])
+var mapLayers = L.layerGroup([overlayMaps]);
 
 var control = L.control.activeLayers(overlayMaps); 
 control.addTo(map);
@@ -185,7 +214,7 @@ function getLegendHTML() {
   var grades = [1, 10, 20, 30, 40, 50, 60, 70, 80],
   labels = [],
   from, to;
-  var colours = ['#0000FF', '#00CC33', '#CC9966', '#CC0099', '#FFFF00', '#FF0000', '#00CCFF', '#000000', '#009900','#FF9900','#CC99CC', '#006666' ];
+  var colours = ['#0000FF', '#AFFF33', '#CC9966', '#CC0099', '#FFFF00', '#FF0000', '#00CCFF', '#000000', '#009900','#FF9900','#CC99CC', '#006666' ];
   var genera = ['M. assamensis', 'M. cyclopis', 'M. fascicularis', 'M. fuscata', 'M. maura', 'M. mulatta', 'M. nemestrina', 'M. nigra', 'M. radiata', 'M. silenus', 'M. sinica', 'M. sylvanus' ];
 
   var generaLegend = [];
