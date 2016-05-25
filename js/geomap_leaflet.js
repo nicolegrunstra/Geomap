@@ -19,23 +19,50 @@ var baseLayer = L.geoJson(geoMap, {
 // to pass in the features properties and geometry
 var allometry_markers = L.mapbox.featureLayer(geojson, {
     pointToLayer: function(feature) {
-	return L.circleMarker(feature.geometry.coordinates, 
+      if (feature.properties.allometry > 0) {
+        return L.circleMarker(feature.geometry.coordinates, 
 	 	{radius: feature.properties.allometry_scaled * 50, 
 		fillColor: feature.properties.colour,
 		color: feature.properties.colour,  
 		fillOpacity: 0.8}).bindPopup("<strong><i>"+feature.properties.species+"</i></strong>\
-		<br/>Allometry: " + feature.properties.allometry);
+                <br/>Allometry: " + feature.properties.allometry);
+      }
+      else {
+        var xc = feature.geometry.coordinates[0];
+        var yc = feature.geometry.coordinates[1];
+        var l  = feature.properties.allometry_scaled * 5; 
+        var bounds = [[xc - l, yc - l], [xc + l, yc + l]];
+          return L.rectangle(bounds, {
+              weight: 1,
+              fillColor: feature.properties.colour,
+	      color: feature.properties.colour,  
+	      fillOpacity: 0.8}).bindPopup("<strong><i>" + feature.properties.species +
+                                           "</i></strong><br/>Allometry: "
+                                           + feature.properties.allometry);
+      }
     }
 }).addTo(map);
 
 var ecological_cline = L.mapbox.featureLayer(geojson, {
     pointToLayer: function(feature) {
+        if (feature.properties.cline > 0) {
 	return L.circleMarker(feature.geometry.coordinates, 
 	 	{radius: feature.properties.eco_scaled * 50, 
 		fillColor: feature.properties.colour,
 		color: feature.properties.colour,  
 		fillOpacity: 0.8}).bindPopup("<strong><i>"+feature.properties.species+"</i></strong>\
 		<br/>Ecological cline: " + feature.properties.cline);
+	}
+        else {
+        var xc = feature.geometry.coordinates[0];
+        var yc = feature.geometry.coordinates[1];
+        var l  = feature.properties.eco_scaled * 5; 
+        var bounds = [[xc - l, yc - l], [xc + l, yc + l]];
+        return L.rectangle(bounds, { 
+		color: feature.properties.colour,  
+		fillOpacity: 0.8}).bindPopup("<strong><i>"+feature.properties.species+"</i></strong>\
+		<br/>Ecological cline: " + feature.properties.cline);
+	}
     }
 });
 
