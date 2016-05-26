@@ -27,6 +27,18 @@ var geojson = {
     },
     {
       "type" : "Feature",
+      "geometry" : {"type" : "Point", "coordinates" : [ 3.0400, 108.0700 ]},
+      "properties" : {
+        "species" : "M. nemestrina",
+        "allometry" : 9.420752,
+        "cline" : 3.844561,
+        "allometry_scaled" : 1.021271,
+        "eco_scaled" : 1.000000,
+        "colour" : "#00CCFF"
+      }
+    },
+    {
+      "type" : "Feature",
       "geometry" : {"type" : "Point", "coordinates" : [ 4.1300, 111.2400 ]},
       "properties" : {
         "species" : "M. fascicularis",
@@ -71,18 +83,6 @@ var geojson = {
         "allometry_scaled" : 0.180093,
         "eco_scaled" : 0.616138,
         "colour" : "#FF0000"
-      }
-    },
-    {
-      "type" : "Feature",
-      "geometry" : {"type" : "Point", "coordinates" : [ 3.0400, 108.0700 ]},
-      "properties" : {
-        "species" : "M. nemestrina",
-        "allometry" : 9.420752,
-        "cline" : 3.844561,
-        "allometry_scaled" : 1.021271,
-        "eco_scaled" : 1.000000,
-        "colour" : "#00CCFF"
       }
     },
     {
