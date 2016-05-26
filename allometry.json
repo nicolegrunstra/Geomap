@@ -22,7 +22,7 @@ var geojson = {
         "cline" : -1.392774,
         "allometry_scaled" : 0.495711,
         "eco_scaled" : 0.362271,
-        "colour" : "#00CC33"
+        "colour" : "#AFFF33"
       }
     },
     {
@@ -144,5 +144,6 @@ var geojson = {
         "eco_scaled" : 0.302387,
         "colour" : "#006666"
       }
-    }]
+    }
+  ]
 };
