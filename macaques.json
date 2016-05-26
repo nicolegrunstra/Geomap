@@ -1,0 +1,148 @@
+var geojson = {
+  "type" : "FeatureCollection",
+  "features" : [
+    {
+      "type" : "Feature",
+      "geometry" : {"type" : "Point", "coordinates" : [ 23.0100, 97.1900 ]},
+      "properties" : {
+        "species" : "M. assamensis",
+        "allometry" : 9.251743,
+        "cline" : 0.254727,
+        "allometry_scaled" : 1.013557,
+        "eco_scaled" : 0.066256,
+        "colour" : "#0000FF"
+      }
+    },
+    {
+      "type" : "Feature",
+      "geometry" : {"type" : "Point", "coordinates" : [ 23.9100, 121.0400 ]},
+      "properties" : {
+        "species" : "M. cyclopis",
+        "allometry" : -2.093779,
+        "cline" : -1.392774,
+        "allometry_scaled" : 0.495711,
+        "eco_scaled" : 0.362271,
+        "colour" : "#00CC33"
+      }
+    },
+    {
+      "type" : "Feature",
+      "geometry" : {"type" : "Point", "coordinates" : [ 4.1300, 111.2400 ]},
+      "properties" : {
+        "species" : "M. fascicularis",
+        "allometry" : -10.507982,
+        "cline" : 0.067178,
+        "allometry_scaled" : 0.111660,
+        "eco_scaled" : 0.017473,
+        "colour" : "#CC9966"
+      }
+    },
+    {
+      "type" : "Feature",
+      "geometry" : {"type" : "Point", "coordinates" : [ 35.8800, 135.5100 ]},
+      "properties" : {
+        "species" : "M. fuscata",
+        "allometry" : 10.763450,
+        "cline" : -0.813451,
+        "allometry_scaled" : 1.082556,
+        "eco_scaled" : 0.211585,
+        "colour" : "#CC0099"
+      }
+    },
+    {
+      "type" : "Feature",
+      "geometry" : {"type" : "Point", "coordinates" : [ -4.9800, 119.9000 ]},
+      "properties" : {
+        "species" : "M. maura",
+        "allometry" : 0.878624,
+        "cline" : -0.296088,
+        "allometry_scaled" : 0.631381,
+        "eco_scaled" : 0.077015,
+        "colour" : "#FFFF00"
+      }
+    },
+    {
+      "type" : "Feature",
+      "geometry" : {"type" : "Point", "coordinates" : [ 25.0700, 96.6700 ]},
+      "properties" : {
+        "species" : "M. mulatta",
+        "allometry" : -9.008678,
+        "cline" : -2.368781,
+        "allometry_scaled" : 0.180093,
+        "eco_scaled" : 0.616138,
+        "colour" : "#FF0000"
+      }
+    },
+    {
+      "type" : "Feature",
+      "geometry" : {"type" : "Point", "coordinates" : [ 3.0400, 108.0700 ]},
+      "properties" : {
+        "species" : "M. nemestrina",
+        "allometry" : 9.420752,
+        "cline" : 3.844561,
+        "allometry_scaled" : 1.021271,
+        "eco_scaled" : 1.000000,
+        "colour" : "#00CCFF"
+      }
+    },
+    {
+      "type" : "Feature",
+      "geometry" : {"type" : "Point", "coordinates" : [ 1.0100, 124.2600 ]},
+      "properties" : {
+        "species" : "M. nigra",
+        "allometry" : 0.263514,
+        "cline" : 2.839241,
+        "allometry_scaled" : 0.603306,
+        "eco_scaled" : 0.738508,
+        "colour" : "#000000"
+      }
+    },
+    {
+      "type" : "Feature",
+      "geometry" : {"type" : "Point", "coordinates" : [ 14.5900, 77.0600 ]},
+      "properties" : {
+        "species" : "M. radiata",
+        "allometry" : -3.925561,
+        "cline" : -0.943298,
+        "allometry_scaled" : 0.412103,
+        "eco_scaled" : 0.245359,
+        "colour" : "#009900"
+      }
+    },
+    {
+      "type" : "Feature",
+      "geometry" : {"type" : "Point", "coordinates" : [ 13.1900, 76.1200 ]},
+      "properties" : {
+        "species" : "M. silenus",
+        "allometry" : -3.208547,
+        "cline" : -0.563349,
+        "allometry_scaled" : 0.444830,
+        "eco_scaled" : 0.146531,
+        "colour" : "#FF9900"
+      }
+    },
+    {
+      "type" : "Feature",
+      "geometry" : {"type" : "Point", "coordinates" : [ 7.8700, 80.7800 ]},
+      "properties" : {
+        "species" : "M. sinica",
+        "allometry" : -11.145624,
+        "cline" : -0.417605,
+        "allometry_scaled" : 0.082556,
+        "eco_scaled" : 0.108622,
+        "colour" : "#CC99CC"
+      }
+    },
+    {
+      "type" : "Feature",
+      "geometry" : {"type" : "Point", "coordinates" : [ 34.2100, -0.6200 ]},
+      "properties" : {
+        "species" : "M. sylvanus",
+        "allometry" : 3.306113,
+        "cline" : -1.162544,
+        "allometry_scaled" : 0.742180,
+        "eco_scaled" : 0.302387,
+        "colour" : "#006666"
+      }
+    }]
+};

@@ -44,10 +44,6 @@ id = 0
 scale = 50
 ln = 5
 
-wfile.write('var geojson = {\
-  \n"type" : "FeatureCollection",\
-  \n"features" : [')
-
 try:
   reader = csv.reader(file, delimiter=",")
   for line in reader:
@@ -67,21 +63,24 @@ try:
       colour = line[7]
       id = id + 1
       case = eco
-      wfile.write('\n{\
-      \n\"type\" : \"Feature\",\
-      \n\"geometry\" : {\"type\" : \"Point\", \"coordinates\" : [ %.4f, %.4f ]},\
-      \n\"properties\" : {\
-      \n  "species" : "%s",\
-      \n  "allometry" : %.6f,\
-      \n  "cline" : %.6f,\
-      \n  "allometry_scaled" : %.6f,\
-      \n  "eco_scaled" : %.6f,\
-      \n  "colour" : \"%s\"\
-      \n}\
-      \n},' % (lat, lon, species, allometry, eco, allometry_scaled, eco_scaled, colour))
-      
-finally:
-  wfile.write('\n]\n};')
+      print(species)
+      if (case > 0):
+        wfile.write('\n\
+        \nvar %s = L.circleMarker([%.4f,%.4f], {\
+        \n  radius: %.4f * scale,\
+        \n  color: \'%s\',\
+        \n  fillColor: \'%s\',\
+        \n  fillOpacity: 0.7\
+        \n  }).bindPopup("<strong><i>%s</i></strong><br/>Ecological cline: %.4f");' % (species, lat, lon, eco_scaled, colour, colour, species, eco))
+      else:
+        wfile.write('\n\
+        \nvar %s = L.rectangle([[%.4f -ln, %.4f -ln],[%.4f + ln, %.4f + ln]], {\
+        \n  weight: 1,\
+        \n  color: \'%s\',\
+        \n  fillColor: \'%s\',\
+        \n  fillOpacity: 0.7\
+        \n  }).bindPopup("<strong><i>%s</i></strong><br/>Ecological cline: %.4f");' % (species, lat, lon,lat, lon, colour, colour, species, eco))
 
+finally:
   file.close()
   wfile.close()
