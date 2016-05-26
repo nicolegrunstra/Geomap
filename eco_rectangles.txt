@@ -1,0 +1,57 @@
+
+        
+var M. cyclopis = L.rectangle([[23.9100 - ln * -0.3623, 121.0400 -ln * -0.3623],[23.9100 + ln * -0.3623, 121.0400 + ln  * -0.3623]], {        
+  weight: 1,        
+  color: '#AFFF33',        
+  fillColor: '#AFFF33',        
+  fillOpacity: 0.7        
+  }).bindPopup("<strong><i>M. cyclopis</i></strong><br/>Ecological cline: -1.3928");
+        
+var M. fuscata = L.rectangle([[35.8800 - ln * -0.2116, 135.5100 -ln * -0.2116],[35.8800 + ln * -0.2116, 135.5100 + ln  * -0.2116]], {        
+  weight: 1,        
+  color: '#CC0099',        
+  fillColor: '#CC0099',        
+  fillOpacity: 0.7        
+  }).bindPopup("<strong><i>M. fuscata</i></strong><br/>Ecological cline: -0.8135");
+        
+var M. maura = L.rectangle([[-4.9800 - ln * -0.0770, 119.9000 -ln * -0.0770],[-4.9800 + ln * -0.0770, 119.9000 + ln  * -0.0770]], {        
+  weight: 1,        
+  color: '#FFFF00',        
+  fillColor: '#FFFF00',        
+  fillOpacity: 0.7        
+  }).bindPopup("<strong><i>M. maura</i></strong><br/>Ecological cline: -0.2961");
+        
+var M. mulatta = L.rectangle([[25.0700 - ln * -0.6161, 96.6700 -ln * -0.6161],[25.0700 + ln * -0.6161, 96.6700 + ln  * -0.6161]], {        
+  weight: 1,        
+  color: '#FF0000',        
+  fillColor: '#FF0000',        
+  fillOpacity: 0.7        
+  }).bindPopup("<strong><i>M. mulatta</i></strong><br/>Ecological cline: -2.3688");
+        
+var M. radiata = L.rectangle([[14.5900 - ln * -0.2454, 77.0600 -ln * -0.2454],[14.5900 + ln * -0.2454, 77.0600 + ln  * -0.2454]], {        
+  weight: 1,        
+  color: '#009900',        
+  fillColor: '#009900',        
+  fillOpacity: 0.7        
+  }).bindPopup("<strong><i>M. radiata</i></strong><br/>Ecological cline: -0.9433");
+        
+var M. silenus = L.rectangle([[13.1900 - ln * -0.1465, 76.1200 -ln * -0.1465],[13.1900 + ln * -0.1465, 76.1200 + ln  * -0.1465]], {        
+  weight: 1,        
+  color: '#FF9900',        
+  fillColor: '#FF9900',        
+  fillOpacity: 0.7        
+  }).bindPopup("<strong><i>M. silenus</i></strong><br/>Ecological cline: -0.5633");
+        
+var M. sinica = L.rectangle([[7.8700 - ln * -0.1086, 80.7800 -ln * -0.1086],[7.8700 + ln * -0.1086, 80.7800 + ln  * -0.1086]], {        
+  weight: 1,        
+  color: '#CC99CC',        
+  fillColor: '#CC99CC',        
+  fillOpacity: 0.7        
+  }).bindPopup("<strong><i>M. sinica</i></strong><br/>Ecological cline: -0.4176");
+        
+var M. sylvanus = L.rectangle([[34.2100 - ln * -0.3024, -0.6200 -ln * -0.3024],[34.2100 + ln * -0.3024, -0.6200 + ln  * -0.3024]], {        
+  weight: 1,        
+  color: '#006666',        
+  fillColor: '#006666',        
+  fillOpacity: 0.7        
+  }).bindPopup("<strong><i>M. sylvanus</i></strong><br/>Ecological cline: -1.1625");

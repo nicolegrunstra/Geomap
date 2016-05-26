@@ -1,0 +1,53 @@
+var ecoCircle = {
+  "type" : "FeatureCollection",
+  "features" : [
+    {
+      "type" : "Feature",
+      "geometry" : {"type" : "Point", "coordinates" : [ 23.0100, 97.1900 ]},
+      "properties" : {
+        "species" : "M. assamensis",
+        "allometry" : 9.251743,
+        "cline" : 0.254727,
+        "allometry_scaled" : 1.013557,
+        "eco_scaled" : 0.066256,
+        "colour" : "#0000FF"
+      }
+    },
+    {
+      "type" : "Feature",
+      "geometry" : {"type" : "Point", "coordinates" : [ 4.1300, 111.2400 ]},
+      "properties" : {
+        "species" : "M. fascicularis",
+        "allometry" : -10.507982,
+        "cline" : 0.067178,
+        "allometry_scaled" : 0.111660,
+        "eco_scaled" : 0.017473,
+        "colour" : "#CC9966"
+      }
+    },
+    {
+      "type" : "Feature",
+      "geometry" : {"type" : "Point", "coordinates" : [ 3.0400, 108.0700 ]},
+      "properties" : {
+        "species" : "M. nemestrina",
+        "allometry" : 9.420752,
+        "cline" : 3.844561,
+        "allometry_scaled" : 1.021271,
+        "eco_scaled" : 1.000000,
+        "colour" : "#00CCFF"
+      }
+    },
+    {
+      "type" : "Feature",
+      "geometry" : {"type" : "Point", "coordinates" : [ 1.0100, 124.2600 ]},
+      "properties" : {
+        "species" : "M. nigra",
+        "allometry" : 0.263514,
+        "cline" : 2.839241,
+        "allometry_scaled" : 0.603306,
+        "eco_scaled" : 0.738508,
+        "colour" : "#000000"
+      }
+    }
+  ]
+};

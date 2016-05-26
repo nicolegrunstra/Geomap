@@ -8,10 +8,9 @@ var map = L.mapbox.map('map', 'mapbox.light', {attributionControl: false,
 
 var popup = new L.Popup({ autoPan: false });
 
-var scale = 50;
-var ln = 2;
-      
 // Allometry
+var scale = 50;
+
 // load the above GeoJSON into the featureLayer and use pointToLayer
 // to pass in the features properties and geometry
 var allometry_markers =
@@ -33,96 +32,95 @@ var allometry_markers =
         }
       });
 
+
 // Ecological cline
 var scale = 50;
+        
+var eco_circmarkers =
+  L.mapbox.featureLayer(
+    ecoCircle,
+      {
+        pointToLayer : function(feature) {
+          return L.circleMarker(
+            feature.geometry.coordinates,
+              {
+                radius : feature.properties.eco_scaled * scale,
+                fillColor : feature.properties.colour,
+                color : feature.properties.colour,
+                fillOpacity : 0.9
+              })
+                .bindPopup("<strong><i>" + feature.properties.species +
+                           "</i></strong><br/>Ecological cline: " +
+                           feature.properties.cline);
+        }
+      });
 
-var eco_assamensis = L.circleMarker([23.0100,97.1900], {        
-  radius: 0.0663 * scale,        
-  color: '#0000FF',        
-  fillColor: '#0000FF',        
-  fillOpacity: 0.7        
-  }).bindPopup("<strong><i>M. assamensis</i></strong><br/>Ecological cline: 0.2547");
+// Ecological cline - negative values
+var ln = -5;
         
-var eco_cyclopis = L.rectangle([[23.9100 -ln, 121.0400 -ln],[23.9100 + ln, 121.0400 + ln]], {        
+var eco_cyclopis = L.rectangle([[23.9100 - ln * -0.3623, 121.0400 -ln * -0.3623],[23.9100 + ln * -0.3623, 121.0400 + ln  * -0.3623]], {        
   weight: 1,        
-  color: '#00CC33',        
-  fillColor: '#00CC33',        
+  color: '#AFFF33',        
+  fillColor: '#AFFF33',        
   fillOpacity: 0.7        
-  }).bindPopup("<strong><i>M. cyclopis</i><strong><br/>Ecological cline: -1.3928");
+  }).bindPopup("<strong><i>M. cyclopis</i></strong><br/>Ecological cline: -1.3928");
         
-var eco_fascicularis = L.circleMarker([4.1300,111.2400], {        
-  radius: 0.0175 * scale,        
-  color: '#CC9966',        
-  fillColor: '#CC9966',        
-  fillOpacity: 0.7        
-  }).bindPopup("<strong><i>M. fascicularis</i></strong><br/>Ecological cline: 0.0672");
-        
-var eco_fuscata = L.rectangle([[35.8800 -ln, 135.5100 -ln],[35.8800 + ln, 135.5100 + ln]], {        
+var eco_fuscata = L.rectangle([[35.8800 - ln * -0.2116, 135.5100 -ln * -0.2116],[35.8800 + ln * -0.2116, 135.5100 + ln  * -0.2116]], {        
   weight: 1,        
   color: '#CC0099',        
   fillColor: '#CC0099',        
   fillOpacity: 0.7        
-  }).bindPopup("<strong><i>M. fuscata</i><strong><br/>Ecological cline: -0.8135");
+  }).bindPopup("<strong><i>M. fuscata</i></strong><br/>Ecological cline: -0.8135");
         
-var eco_maura = L.rectangle([[-4.9800 -ln, 119.9000 -ln],[-4.9800 + ln, 119.9000 + ln]], {        
+var eco_maura = L.rectangle([[-4.9800 - ln * -0.0770, 119.9000 -ln * -0.0770],[-4.9800 + ln * -0.0770, 119.9000 + ln  * -0.0770]], {        
   weight: 1,        
   color: '#FFFF00',        
   fillColor: '#FFFF00',        
   fillOpacity: 0.7        
-  }).bindPopup("<strong><i>M. maura</i><strong><br/>Ecological cline: -0.2961");
+  }).bindPopup("<strong><i>M. maura</i></strong><br/>Ecological cline: -0.2961");
         
-var eco_mulatta = L.rectangle([[25.0700 -ln, 96.6700 -ln],[25.0700 + ln, 96.6700 + ln]], {        
+var eco_mulatta = L.rectangle([[25.0700 - ln * -0.6161, 96.6700 -ln * -0.6161],[25.0700 + ln * -0.6161, 96.6700 + ln  * -0.6161]], {        
   weight: 1,        
   color: '#FF0000',        
   fillColor: '#FF0000',        
   fillOpacity: 0.7        
-  }).bindPopup("<strong><i>M. mulatta</i><strong><br/>Ecological cline: -2.3688");
+  }).bindPopup("<strong><i>M. mulatta</i></strong><br/>Ecological cline: -2.3688");
         
-var eco_nemestrina = L.circleMarker([3.0400,108.0700], {        
-  radius: 1.0000 * scale,        
-  color: '#00CCFF',        
-  fillColor: '#00CCFF',        
-  fillOpacity: 0.7        
-  }).bindPopup("<strong><i>M. nemestrina</i></strong><br/>Ecological cline: 3.8446");
-        
-var eco_nigra = L.circleMarker([1.0100,124.2600], {        
-  radius: 0.7385 * scale,        
-  color: '#000000',        
-  fillColor: '#000000',        
-  fillOpacity: 0.7        
-  }).bindPopup("<strong><i>M. nigra</i></strong><br/>Ecological cline: 2.8392");
-        
-var eco_radiata = L.rectangle([[14.5900 -ln, 77.0600 -ln],[14.5900 + ln, 77.0600 + ln]], {        
+var eco_radiata = L.rectangle([[14.5900 - ln * -0.2454, 77.0600 -ln * -0.2454],[14.5900 + ln * -0.2454, 77.0600 + ln  * -0.2454]], {        
   weight: 1,        
   color: '#009900',        
   fillColor: '#009900',        
   fillOpacity: 0.7        
-  }).bindPopup("<strong><i>M. radiata</i><strong><br/>Ecological cline: -0.9433");
+  }).bindPopup("<strong><i>M. radiata</i></strong><br/>Ecological cline: -0.9433");
         
-var eco_silenus = L.rectangle([[13.1900 -ln, 76.1200 -ln],[13.1900 + ln, 76.1200 + ln]], {        
+var eco_silenus = L.rectangle([[13.1900 - ln * -0.1465, 76.1200 -ln * -0.1465],[13.1900 + ln * -0.1465, 76.1200 + ln  * -0.1465]], {        
   weight: 1,        
   color: '#FF9900',        
   fillColor: '#FF9900',        
   fillOpacity: 0.7        
-  }).bindPopup("<strong><i>M. silenus</i><strong><br/>Ecological cline: -0.5633");
+  }).bindPopup("<strong><i>M. silenus</i></strong><br/>Ecological cline: -0.5633");
         
-var eco_sinica = L.rectangle([[7.8700 -ln, 80.7800 -ln],[7.8700 + ln, 80.7800 + ln]], {        
+var eco_sinica = L.rectangle([[7.8700 - ln * -0.1086, 80.7800 -ln * -0.1086],[7.8700 + ln * -0.1086, 80.7800 + ln  * -0.1086]], {        
   weight: 1,        
   color: '#CC99CC',        
   fillColor: '#CC99CC',        
   fillOpacity: 0.7        
-  }).bindPopup("<strong><i>M. sinica</i><strong><br/>Ecological cline: -0.4176");
+  }).bindPopup("<strong><i>M. sinica</i></strong><br/>Ecological cline: -0.4176");
         
-var eco_sylvanus = L.rectangle([[34.2100 -ln, -0.6200 -ln],[34.2100 + ln, -0.6200 + ln]], {        
+var eco_sylvanus = L.rectangle([[34.2100 - ln * -0.3024, -0.6200 -ln * -0.3024],[34.2100 + ln * -0.3024, -0.6200 + ln  * -0.3024]], {        
   weight: 1,        
   color: '#006666',        
   fillColor: '#006666',        
   fillOpacity: 0.7        
-}).bindPopup("<strong><i>M. sylvanus</i><strong><br/>Ecological cline: -1.1625");
+}).bindPopup("<strong><i>M. sylvanus</i></strong><br/>Ecological cline: -1.1625");
+
+
+
+
 
 var allometry_layer = L.layerGroup([allometry_markers]).addTo(map);
 
-var eco_layer = L.layerGroup([eco_assamensis, eco_cyclopis, eco_fascicularis, eco_fuscata, eco_maura, eco_mulatta, eco_nemestrina, eco_nigra, eco_radiata, eco_silenus, eco_sinica, eco_sylvanus]);
+var eco_layer = L.layerGroup([eco_cyclopis, eco_fuscata, eco_maura, eco_mulatta, eco_radiata, eco_silenus, eco_sinica, eco_sylvanus, eco_circmarkers]);
 
 var overlayMaps = { "Allometry": allometry_layer, "Ecological cline": eco_layer };
 
