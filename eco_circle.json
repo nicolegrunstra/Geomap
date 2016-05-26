@@ -9,7 +9,7 @@ var ecoCircle = {
         "allometry" : 9.251743,
         "cline" : 0.254727,
         "allometry_scaled" : 1.013557,
-        "eco_scaled" : 0.066256,
+        "eco_scaled" : 0.166256,
         "colour" : "#0000FF"
       }
     },
@@ -21,7 +21,7 @@ var ecoCircle = {
         "allometry" : 9.420752,
         "cline" : 3.844561,
         "allometry_scaled" : 1.021271,
-        "eco_scaled" : 1.000000,
+        "eco_scaled" : 1.100000,
         "colour" : "#00CCFF"
       }
     },
@@ -33,7 +33,7 @@ var ecoCircle = {
         "allometry" : -10.507982,
         "cline" : 0.067178,
         "allometry_scaled" : 0.111660,
-        "eco_scaled" : 0.017473,
+        "eco_scaled" : 0.117473,
         "colour" : "#CC9966"
       }
     },
@@ -45,7 +45,7 @@ var ecoCircle = {
         "allometry" : 0.263514,
         "cline" : 2.839241,
         "allometry_scaled" : 0.603306,
-        "eco_scaled" : 0.738508,
+        "eco_scaled" : 0.838508,
         "colour" : "#000000"
       }
     }
