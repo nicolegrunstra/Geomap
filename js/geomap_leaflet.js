@@ -35,25 +35,6 @@ var allometry_markers =
 
 // Ecological cline
 var scale = 50;
-        
-var eco_circmarkers =
-  L.mapbox.featureLayer(
-    ecoCircle,
-      {
-        pointToLayer : function(feature) {
-          return L.circleMarker(
-            feature.geometry.coordinates,
-              {
-                radius : feature.properties.eco_scaled * scale,
-                fillColor : feature.properties.colour,
-                color : feature.properties.colour,
-                fillOpacity : 0.9
-              })
-                .bindPopup("<strong><i>" + feature.properties.species +
-                           "</i></strong><br/>Ecological cline: " +
-                           feature.properties.cline);
-        }
-      });
 
 // Ecological cline - negative values
 var ln = -5;
@@ -114,13 +95,36 @@ var eco_sylvanus = L.rectangle([[34.2100 - ln * -0.3024, -0.6200 -ln * -0.3024],
   fillOpacity: 0.7        
 }).bindPopup("<strong><i>M. sylvanus</i></strong><br/>Ecological cline: -1.1625");
 
+var eco_assamensis = new L.circleMarker([23.0100, 97.1900], {
+                radius :  0.166256 * scale,
+                fillColor : "#0000FF",
+                color : "#0000FF",
+                fillOpacity : 0.9
+              }).bindPopup("<strong><i>M. assamensis</i></strong><br/>Ecological cline: "+0.254727);
 
-
-
+var eco_circmarkers =
+  L.mapbox.featureLayer(
+    ecoCircle,
+      {
+        pointToLayer : function(feature) {
+          return L.circleMarker(
+            feature.geometry.coordinates,
+              {
+                radius : feature.properties.eco_scaled * scale,
+                fillColor : feature.properties.colour,
+                color : feature.properties.colour,
+                fillOpacity : 0.9
+              })
+                .bindPopup("<strong><i>" + feature.properties.species +
+                           "</i></strong><br/>Ecological cline: " +
+                           feature.properties.cline);
+        }
+      });
+        
 
 var allometry_layer = L.layerGroup([allometry_markers]).addTo(map);
 
-var eco_layer = L.layerGroup([eco_cyclopis, eco_fuscata, eco_maura, eco_mulatta, eco_radiata, eco_silenus, eco_sinica, eco_sylvanus, eco_circmarkers]);
+var eco_layer = L.layerGroup([eco_cyclopis, eco_fuscata, eco_maura, eco_mulatta, eco_radiata, eco_silenus, eco_sinica, eco_sylvanus, eco_circmarkers, eco_assamensis]);
 
 var overlayMaps = { "Allometry": allometry_layer, "Ecological cline": eco_layer };
 

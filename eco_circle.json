@@ -3,18 +3,6 @@ var ecoCircle = {
   "features" : [
     {
       "type" : "Feature",
-      "geometry" : {"type" : "Point", "coordinates" : [ 23.0100, 97.1900 ]},
-      "properties" : {
-        "species" : "M. assamensis",
-        "allometry" : 9.251743,
-        "cline" : 0.254727,
-        "allometry_scaled" : 1.013557,
-        "eco_scaled" : 0.166256,
-        "colour" : "#0000FF"
-      }
-    },
-    {
-      "type" : "Feature",
       "geometry" : {"type" : "Point", "coordinates" : [ 3.0400, 108.0700 ]},
       "properties" : {
         "species" : "M. nemestrina",
@@ -47,6 +35,17 @@ var ecoCircle = {
         "allometry_scaled" : 0.603306,
         "eco_scaled" : 0.838508,
         "colour" : "#000000"
+      }
+    },{
+      "type" : "Feature",
+      "geometry" : {"type" : "Point", "coordinates" : [ 23.0100, 97.1900 ]},
+      "properties" : {
+        "species" : "M. assamensis",
+        "allometry" : 9.251743,
+        "cline" : 0.254727,
+        "allometry_scaled" : 1.013557,
+        "eco_scaled" : 0.166256,
+        "colour" : "#0000FF"
       }
     }
   ]
