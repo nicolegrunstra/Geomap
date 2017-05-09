@@ -2,4 +2,4 @@
 > Nicole Grunstra
 
 ## Live page
-[Allometry and ecological cline of macaques](nicolegrunstra.github.io/Geomap)
+[Allometry and ecological cline of macaques](https://nicolegrunstra.github.io/Geomap)
